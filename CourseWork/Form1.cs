@@ -5,23 +5,40 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseWork
 {
+
+     
     public partial class Form1 : Form
     {
+        public static string tempDesc;
+        public static string tempName;
+        public static string tempPath;
+        public static bool tempIsAccess;
+        public static bool wasWrire;
+
+       List<fileInformation> fileInformation;
+        Boolean isSecond;
         public Form1()
         {
             InitializeComponent();
+            Directory.CreateDirectory("C:\\courseWork");
+            isSecond = false;
+            fileInformation = new List<fileInformation>();
+            updateDrop();
+
+
         }
+    
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             ableSecond();
-            Directory.CreateDirectory("C:\\courseWork");
           //  FileInfo.CopyTo("C:\\Users\\Mikhail\\Desktop\\n.txthr_main.log", "C:\\courseWork");
         }
 
@@ -32,27 +49,12 @@ namespace CourseWork
             enableSecond();
             
         }
-
         
-        private void result2_Click(object sender, EventArgs e)
-        {
-            
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.CheckFileExists = true;
-                openFileDialog.AddExtension = true;
-                openFileDialog.Multiselect = true;
-               // openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
-
-                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    foreach (string fileName in openFileDialog.FileNames)
-                    {
-                        //Process.Start(fileName);
-                    }
-                }
-         }
+        
+       
         private void ableSecond()
         {
+            isSecond = true;
             text_lec2.Enabled = true;
             text_pr2.Enabled = true;
             text_lab2.Enabled = true;
@@ -69,6 +71,7 @@ namespace CourseWork
         }
         private void enableSecond()
         {
+            isSecond = false;
             text_lec2.Enabled = false;
             text_pr2.Enabled = false;
             text_lab2.Enabled = false;
@@ -84,5 +87,144 @@ namespace CourseWork
             dropPr2.Enabled = false;
         }
 
+        private void addLec1_Click(object sender, EventArgs e)
+        {
+
+            addFiles(11);
+        }
+
+        private void addLec2_Click(object sender, EventArgs e)
+        {
+            addFiles(12);
+        }
+
+        private void addPr1_Click(object sender, EventArgs e)
+        {
+            addFiles(21);
+        }
+
+        private void addPr2_Click(object sender, EventArgs e)
+        {
+            addFiles(22);
+        }
+
+        private void addLab1_Click(object sender, EventArgs e)
+        {
+            addFiles(31);
+        }
+
+        private void addLab2_Click(object sender, EventArgs e)
+        {
+            addFiles(32);
+        }
+        private void addFiles(byte number)
+        {
+            
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+            if (wasWrire)
+            {
+                fileInformation.Add(new fileInformation(number, tempName, tempPath, tempDesc, tempIsAccess));
+            }
+            updateDrop();
+
+        }
+
+        private void delFiles(string name)
+        {
+            
+            foreach( fileInformation fileOne in fileInformation)
+            {
+                if (fileOne.name.Equals(name))
+                {
+                   
+                   fileInformation.Remove(fileOne);
+                    break;
+                }
+            }
+            
+
+            MessageBox.Show("Файл был удален из локального репозитория программы", "Уведомление");
+        }
+
+        private void updateDrop()
+        {
+            dropLec1.Items.Clear();
+            dropLec1.Items.Clear();
+            dropLab1.Items.Clear();
+            dropLab1.Items.Clear();
+            dropPr1.Items.Clear();
+            dropPr1.Items.Clear();
+            for (int i = 0; i < fileInformation.Count; i++)
+            {
+                switch (fileInformation[i].number)
+                {
+                    case 11:
+                        dropLec1.Items.Add(fileInformation[i].name);
+                    break;
+                    case 12:
+                        dropLec2.Items.Add(fileInformation[i].name);
+                        break;
+                    case 21:
+                        dropPr1.Items.Add(fileInformation[i].name);
+                        break;
+                    case 22:
+                        dropPr2.Items.Add(fileInformation[i].name);
+                        break;
+                    case 31:
+                        dropLab1.Items.Add(fileInformation[i].name);
+                        break;
+                    case 32:
+                        dropLab2.Items.Add(fileInformation[i].name);
+                        break;
+                    default: break;
+
+                }
+                   
+            }
+        }
+
+        private void delLec1_Click(object sender, EventArgs e)
+        {
+            string name = dropLec1.SelectedItem.ToString();
+            dropLec1.Items.RemoveAt(dropLec1.SelectedIndex);
+            delFiles(name);
+           
+        }
+
+        private void delLec2_Click(object sender, EventArgs e)
+        {
+            string name = dropLec2.SelectedItem.ToString();
+            dropLec2.Items.RemoveAt(dropLec2.SelectedIndex);
+            delFiles(name);
+        }
+
+        private void delPr1_Click(object sender, EventArgs e)
+        {
+            string name = dropPr1.SelectedItem.ToString();
+            dropPr1.Items.RemoveAt(dropPr1.SelectedIndex);
+            delFiles(name);
+        }
+
+        private void delPr2_Click(object sender, EventArgs e)
+        {
+            string name = dropPr1.SelectedItem.ToString();
+            dropPr2.Items.RemoveAt(dropPr2.SelectedIndex);
+            delFiles(name);
+        }
+
+        private void dellab1_Click(object sender, EventArgs e)
+        {
+            string name = dropLab1.SelectedItem.ToString();
+            dropLab1.Items.RemoveAt(dropLab1.SelectedIndex);
+            delFiles(name);
+        }
+
+        private void delLab2_Click(object sender, EventArgs e)
+        {
+            string name = dropLab2.SelectedItem.ToString();
+            dropLab2.Items.RemoveAt(dropLab2.SelectedIndex);
+            delFiles(name);
+        }
     }
 }

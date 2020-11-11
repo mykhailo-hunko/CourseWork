@@ -80,6 +80,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.dropLab2 = new System.Windows.Forms.ComboBox();
             this.dropLab1 = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // label1
@@ -366,6 +367,7 @@
             this.addLec1.TabIndex = 37;
             this.addLec1.Text = "Добавить";
             this.addLec1.UseVisualStyleBackColor = true;
+            this.addLec1.Click += new System.EventHandler(this.addLec1_Click);
             // 
             // delLec1
             // 
@@ -375,6 +377,7 @@
             this.delLec1.TabIndex = 38;
             this.delLec1.Text = "Удалить";
             this.delLec1.UseVisualStyleBackColor = true;
+            this.delLec1.Click += new System.EventHandler(this.delLec1_Click);
             // 
             // delLec2
             // 
@@ -384,6 +387,7 @@
             this.delLec2.TabIndex = 40;
             this.delLec2.Text = "Удалить";
             this.delLec2.UseVisualStyleBackColor = true;
+            this.delLec2.Click += new System.EventHandler(this.delLec2_Click);
             // 
             // addLec2
             // 
@@ -393,6 +397,7 @@
             this.addLec2.TabIndex = 39;
             this.addLec2.Text = "Добавить";
             this.addLec2.UseVisualStyleBackColor = true;
+            this.addLec2.Click += new System.EventHandler(this.addLec2_Click);
             // 
             // delPr2
             // 
@@ -402,6 +407,7 @@
             this.delPr2.TabIndex = 49;
             this.delPr2.Text = "Удалить";
             this.delPr2.UseVisualStyleBackColor = true;
+            this.delPr2.Click += new System.EventHandler(this.delPr2_Click);
             // 
             // addPr2
             // 
@@ -411,6 +417,7 @@
             this.addPr2.TabIndex = 48;
             this.addPr2.Text = "Добавить";
             this.addPr2.UseVisualStyleBackColor = true;
+            this.addPr2.Click += new System.EventHandler(this.addPr2_Click);
             // 
             // delPr1
             // 
@@ -420,6 +427,7 @@
             this.delPr1.TabIndex = 47;
             this.delPr1.Text = "Удалить";
             this.delPr1.UseVisualStyleBackColor = true;
+            this.delPr1.Click += new System.EventHandler(this.delPr1_Click);
             // 
             // addPr1
             // 
@@ -429,6 +437,7 @@
             this.addPr1.TabIndex = 46;
             this.addPr1.Text = "Добавить";
             this.addPr1.UseVisualStyleBackColor = true;
+            this.addPr1.Click += new System.EventHandler(this.addPr1_Click);
             // 
             // label21
             // 
@@ -486,6 +495,7 @@
             this.delLab2.TabIndex = 58;
             this.delLab2.Text = "Удалить";
             this.delLab2.UseVisualStyleBackColor = true;
+            this.delLab2.Click += new System.EventHandler(this.delLab2_Click);
             // 
             // addLab2
             // 
@@ -495,6 +505,7 @@
             this.addLab2.TabIndex = 57;
             this.addLab2.Text = "Добавить";
             this.addLab2.UseVisualStyleBackColor = true;
+            this.addLab2.Click += new System.EventHandler(this.addLab2_Click);
             // 
             // dellab1
             // 
@@ -504,6 +515,7 @@
             this.dellab1.TabIndex = 56;
             this.dellab1.Text = "Удалить";
             this.dellab1.UseVisualStyleBackColor = true;
+            this.dellab1.Click += new System.EventHandler(this.dellab1_Click);
             // 
             // addLab1
             // 
@@ -513,6 +525,7 @@
             this.addLab1.TabIndex = 55;
             this.addLab1.Text = "Добавить";
             this.addLab1.UseVisualStyleBackColor = true;
+            this.addLab1.Click += new System.EventHandler(this.addLab1_Click);
             // 
             // label24
             // 
@@ -561,6 +574,10 @@
             this.dropLab1.Name = "dropLab1";
             this.dropLab1.Size = new System.Drawing.Size(225, 21);
             this.dropLab1.TabIndex = 50;
+            // 
+            // backgroundWorker1
+            // 
+       
             // 
             // Form1
             // 
@@ -680,6 +697,7 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox dropLab2;
         private System.Windows.Forms.ComboBox dropLab1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
