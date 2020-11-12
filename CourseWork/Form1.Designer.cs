@@ -81,6 +81,7 @@
             this.dropLab2 = new System.Windows.Forms.ComboBox();
             this.dropLab1 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.htmlFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -307,7 +308,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 466);
+            this.splitter1.Size = new System.Drawing.Size(3, 499);
             this.splitter1.TabIndex = 31;
             this.splitter1.TabStop = false;
             // 
@@ -575,15 +576,23 @@
             this.dropLab1.Size = new System.Drawing.Size(225, 21);
             this.dropLab1.TabIndex = 50;
             // 
-            // backgroundWorker1
+            // htmlFile
             // 
-       
+            this.htmlFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.htmlFile.Location = new System.Drawing.Point(381, 452);
+            this.htmlFile.Name = "htmlFile";
+            this.htmlFile.Size = new System.Drawing.Size(196, 35);
+            this.htmlFile.TabIndex = 59;
+            this.htmlFile.Text = "Сформировать HTML";
+            this.htmlFile.UseVisualStyleBackColor = true;
+            this.htmlFile.Click += new System.EventHandler(this.htmlFile_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 466);
+            this.ClientSize = new System.Drawing.Size(863, 499);
+            this.Controls.Add(this.htmlFile);
             this.Controls.Add(this.delLab2);
             this.Controls.Add(this.addLab2);
             this.Controls.Add(this.dellab1);
@@ -698,6 +707,7 @@
         private System.Windows.Forms.ComboBox dropLab2;
         private System.Windows.Forms.ComboBox dropLab1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button htmlFile;
     }
 }
 

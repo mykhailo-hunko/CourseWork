@@ -23,11 +23,10 @@ namespace CourseWork
         public static bool wasWrire;
 
        List<fileInformation> fileInformation;
-        Boolean isSecond;
+        bool isSecond;
         public Form1()
         {
             InitializeComponent();
-            Directory.CreateDirectory("C:\\courseWork");
             isSecond = false;
             fileInformation = new List<fileInformation>();
             updateDrop();
@@ -225,6 +224,81 @@ namespace CourseWork
             string name = dropLab2.SelectedItem.ToString();
             dropLab2.Items.RemoveAt(dropLab2.SelectedIndex);
             delFiles(name);
+        }
+
+        private void htmlFile_Click(object sender, EventArgs e)
+        {
+            clearDirectory();
+            
+            foreach (fileInformation file in fileInformation)
+            {
+                switch (file.number)
+                {
+                    case 11:
+                       File.Copy(file.path, @"D:\courseWork\Lec1\" + file.name);
+                        break;
+                    case 12:
+                        if (isSecond)
+                        {
+                            File.Copy(file.path, @"D:\courseWork\Lec2\" + file.name);
+                        }
+                        break;
+                    case 21:
+                        File.Copy(file.path, @"D:\courseWork\Pr1\" + file.name);
+                        break;
+                    case 22:
+                        if (isSecond)
+                        {
+                            File.Copy(file.path, @"D:\courseWork\Pr2\" + file.name);
+                        }
+                        break;
+                    case 31:
+                        File.Copy(file.path, @"D:\courseWork\Lab1\" + file.name);
+                        break;
+                    case 32:
+                        if (isSecond)
+                        {
+                            File.Copy(file.path, @"D:\courseWork\Lab2\" + file.name);
+                        }
+                        break;
+                    default: break;
+
+                }
+                
+            }
+            // toHtml.mainWork();
+        }
+
+        private void clearDirectory()
+        {
+            string[] dir = { @"D:\courseWork", @"D:\courseWork\Lec1", @"D:\courseWork\Lec2", @"D:\courseWork\Pr1", @"D:\courseWork\Pr2", @"D:\courseWork\Lab1", @"D:\courseWork\Lab1" };
+            foreach(string directoryFor in dir)
+            {
+                if (Directory.Exists(directoryFor))
+                {
+                    string[] fileNames = Directory.GetFiles(directoryFor);
+                foreach (string fileName in fileNames)
+                    {
+                        File.Delete(fileName);
+
+                    }
+                
+                }
+                
+
+            }
+            
+            Directory.CreateDirectory(@"D:\courseWork");
+            // Directory.CreateDirectory(@"D:\courseWork\Lab1");
+            Directory.CreateDirectory(@"D:\courseWork\Lec1");
+            Directory.CreateDirectory(@"D:\courseWork\Pr1");
+            if (isSecond)
+            {
+                Directory.CreateDirectory(@"D:\courseWork\Lab2");
+                Directory.CreateDirectory(@"D:\courseWork\Lec2");
+                Directory.CreateDirectory(@"D:\courseWork\Pr2");
+
+            }
         }
     }
 }
