@@ -23,6 +23,7 @@ namespace CourseWork
         public static bool wasWrire;
 
        List<fileInformation> fileInformation;
+        toHtml html;
         bool isSecond;
         public Form1()
         {
@@ -38,7 +39,7 @@ namespace CourseWork
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             ableSecond();
-          //  FileInfo.CopyTo("C:\\Users\\Mikhail\\Desktop\\n.txthr_main.log", "C:\\courseWork");
+          
         }
 
         
@@ -88,7 +89,6 @@ namespace CourseWork
 
         private void addLec1_Click(object sender, EventArgs e)
         {
-
             addFiles(11);
         }
 
@@ -266,6 +266,20 @@ namespace CourseWork
                 }
                 
             }
+            int Lec1;
+            int Lec2;
+            int Pr1;
+            int Pr2;
+            int Lab1;
+            int Lab2;
+            int.TryParse(text_lec1.Text, out Lec1);
+            int.TryParse(text_lec2.Text, out Lec2);
+            int.TryParse(text_pr1.Text, out Pr1);
+            int.TryParse(text_pr2.Text, out Pr2);
+            int.TryParse(text_lab1.Text, out Lab1);
+            int.TryParse(text_lab2.Text, out Lab2);
+
+            html = new toHtml(fileInformation, Lec1, Lec2,Pr1 ,Pr2,Lab1 ,Lab2, isSecond);
             // toHtml.mainWork();
         }
 
@@ -289,7 +303,7 @@ namespace CourseWork
             }
             
             Directory.CreateDirectory(@"D:\courseWork");
-            // Directory.CreateDirectory(@"D:\courseWork\Lab1");
+             Directory.CreateDirectory(@"D:\courseWork\Lab1");
             Directory.CreateDirectory(@"D:\courseWork\Lec1");
             Directory.CreateDirectory(@"D:\courseWork\Pr1");
             if (isSecond)
