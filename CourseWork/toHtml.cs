@@ -85,8 +85,17 @@ namespace CourseWork
             {
                 if(file.number == 10 + sem)
                 {
-                    sw.WriteLine("<a href=\""+ file.path+ "\" target = \"blank\"> " + file.name + "</a><br>");
-                    sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    if (file.isAcceess)
+                    {
+                        sw.WriteLine("<a href=\"" + file.path + "\" target = \"blank\" > " + file.name + "</a><br>");
+                        sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    }
+                    else
+                    {
+                        sw.WriteLine("<a href=\"" + file.path + "\" target = \"blank\" onclick=\"return false; \" > " + file.name + "</a><br>");
+                        sw.WriteLine("(Недоступен)<br>");
+                        sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    }
                 }
             }
             sw.WriteLine("<br><br>Практические занятия(" + (sem == 1 ? Pr1 : Pr2) + " часов):<br>");
@@ -94,17 +103,34 @@ namespace CourseWork
             {
                 if (file.number == 20 + sem)
                 {
-                    sw.WriteLine("<a href=\"" + file.path + "\" target = \"blank\"> " + file.name + "</a><br>");
-                    sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    if (file.isAcceess)
+                    {
+                        sw.WriteLine("<a href=\"" + file.path + "\" target = \"blank\"> " + file.name + "</a><br>");
+                        sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    }
+                    else
+                    {
+                        sw.WriteLine("<a href=\"" + file.path + "\" target = \"blank\"  onclick=\"return false; \" > " + file.name + "</a><br>");
+                        sw.WriteLine("(Недоступен)<br>");
+                        sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    }
                 }
             }
             sw.WriteLine("<br><br>Лабораторные работы(" + (sem == 1 ? Lab1 : Lab2) + " часов):<br>");
             foreach (fileInformation file in fileInformation)
             {
+
                 if (file.number == 30 + sem)
                 {
-                    sw.WriteLine("<a href=\"" + file.path + "\" target = \"blank\"> " + file.name + "</a><br>");
-                    sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    if (file.isAcceess)
+                    {
+                        sw.WriteLine("<a href=\"" + file.path + "\" target = \"blank\"> " + file.name + "</a><br>");
+                        sw.WriteLine("Описание: " + file.description + "<br><br>");
+                    } 
+                    else
+                    {
+
+                    }
                 }
             }
 
