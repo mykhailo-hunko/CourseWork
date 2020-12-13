@@ -22,37 +22,47 @@ namespace CourseWork
         public static bool tempIsAccess;
         public static bool wasWrire;
 
-       List<fileInformation> fileInformation;
+        List<fileInformation> fileInformation;
         toHtml html;
         bool isSecond;
+
         public Form1()
         {
             InitializeComponent();
             isSecond = false;
             fileInformation = new List<fileInformation>();
             updateDrop();
-
-
+            inizColor();
         }
-    
+
+        private void inizColor()
+        {
+            listBoxColor.Items.AddRange( typeof(toHtml.MyColor).GetEnumNames());
+            listColorLec.Items.AddRange(typeof(toHtml.MyColor).GetEnumNames());
+            listColorPr.Items.AddRange(typeof(toHtml.MyColor).GetEnumNames());
+            listColorLab.Items.AddRange(typeof(toHtml.MyColor).GetEnumNames());
+            listColorLec.SelectedIndex = 0;
+            listColorLab.SelectedIndex = 0;
+            listColorPr.SelectedIndex = 0;
+            listBoxColor.SelectedIndex = 0;
+        }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            ableSecond();
-          
+            enableSecond();
         }
 
         
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            enableSecond();
+            disableSecond();
             
         }
         
         
        
-        private void ableSecond()
+        private void enableSecond()
         {
             isSecond = true;
             text_lec2.Enabled = true;
@@ -69,7 +79,7 @@ namespace CourseWork
             dropLec2.Enabled = true;
             dropPr2.Enabled = true;
         }
-        private void enableSecond()
+        private void disableSecond()
         {
             isSecond = false;
             text_lec2.Enabled = false;
@@ -272,6 +282,7 @@ namespace CourseWork
             int Pr2;
             int Lab1;
             int Lab2;
+            int fontSizeText = (int)fontSize.Value;
             int.TryParse(text_lec1.Text, out Lec1);
             int.TryParse(text_lec2.Text, out Lec2);
             int.TryParse(text_pr1.Text, out Pr1);
@@ -279,8 +290,9 @@ namespace CourseWork
             int.TryParse(text_lab1.Text, out Lab1);
             int.TryParse(text_lab2.Text, out Lab2);
 
-            html = new toHtml(fileInformation, Lec1, Lec2,Pr1 ,Pr2,Lab1 ,Lab2, isSecond);
+            html = new toHtml(fileInformation, Lec1, Lec2,Pr1 ,Pr2,Lab1 ,Lab2, isSecond, fontSizeText ,(toHtml.MyColor)listBoxColor.SelectedIndex, (toHtml.MyColor)listColorLec.SelectedIndex, (toHtml.MyColor)listColorPr.SelectedIndex, (toHtml.MyColor)listColorLab.SelectedIndex);
             // toHtml.mainWork();
+
         }
 
         private void clearDirectory()
